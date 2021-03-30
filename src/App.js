@@ -1,8 +1,10 @@
+import MerchController from "./components/MerchController";
+
 
 function App() {
   return (
-    <div className="App">
-      
+    <div id="App">
+      <MerchController/>
     </div>
   );
 }
