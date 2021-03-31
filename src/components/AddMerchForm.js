@@ -1,9 +1,6 @@
 import ReusableForm from './ReusableForm';
 
 
-
-
-
 function AddMerchForm(props){
   return(
     <div>

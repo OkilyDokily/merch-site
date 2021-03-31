@@ -2,70 +2,99 @@ import React from 'react';
 import MerchList from './MerchList';
 import AddMerchForm from './AddMerchForm'
 import MerchDetails from './MerchDetails';
-import EditMerch from './EditMarch';
+import EditMerch from './EditMerch';
+import Cart from './Cart';
 
 class MerchController extends React.Component {
   constructor() {
     super();
     this.state = {
       currentComponent: "MerchList",
-      merchList: ["derp", "chirp","burp","glurp"]
+      merchList: [],
+      details: null
     }
   }
 
-  handleChangeComponent = (component) => { 
-    this.setState({currentComponent:component});
+  handleChangeComponent = (component) => {
+    this.setState({ currentComponent: component });
   };
+
+  handleMerchBuy = (item) => {
+    const arr = this.state.merchList;
+    const index = this.state.merchList.findIndex(x => x.id === item.id);
+    arr[index].quantity = arr[index].quantity--;
+    this.setState({ merchList: arr});
+  }
 
   handleAddMerch = (item) => {
     const arr = this.state.merchList;
     arr.push(item);
-    this.setState({ merchList: arr ,currentComponent:"MerchList"});
+    this.setState({ merchList: arr, currentComponent: "MerchList" });
+  }
+
+  handleEditMerch = (item) => {
+    const arr = this.state.merchList;
+    const index = this.state.merchList.findIndex(x => x.id === item.id);
+    arr[index] = item;
+    this.setState({ merchList: arr, currentComponent: "MerchList" });
+  }
+
+  handleDeleteMerch = (item) => {
+    const arr = this.state.merchList;
+    const index = this.state.merchList.findIndex(x => x.id === item.id);
+    const newArr = arr.splice(index, arr)
+    this.setState({ merchList: newArr, currentComponent: "MerchList" });
+  }
+
+  handleShowDetails = (item) => {
+    this.setState({ currentComponent: "MerchDetail", details: item });
   }
 
   render() {
-    const components = {
-      MerchList: <MerchList merchList={this.state.merchList} onShowDetails={this.handleShowDetails} />,
-      AddMerchForm: <AddMerchForm onAddMerch={this.handleAddMerch}/>,
-      MerchDetail: <MerchDetails  />,
-      EditMerch: <EditMerch />
-    }
-    let currentComponent = components[this.state.currentComponent];
-    
     switch (this.state.currentComponent) {
       case "MerchList":
         return (
           <div>
-            {currentComponent}
-            <button onClick={this.handleChangeComponent.bind(null,"AddMerchForm")}>Add a new item</button>
+            <MerchList merchList={this.state.merchList} onMerchBuy={this.handleMerchBuy} onShowDetails={this.handleShowDetails} />
+            <button onClick={this.handleChangeComponent.bind(null, "AddMerchForm")}>Add a new item</button>
           </div>
         );
       case "AddMerchForm":
         return (
           <div>
-            {currentComponent}
+            <AddMerchForm onAddMerch={this.handleAddMerch} />
+            <hr />
             <button onClick={this.handleChangeComponent.bind(null, "MerchList")}>Return to List</button>
           </div>
         );
       case "MerchDetail":
         return (
           <div>
-            {currentComponent}
+            <MerchDetails details={this.state.details} />
+            <button onClick={this.handleChangeComponent.bind(null, "EditMerch")}>Edit this item</button>
+            <button onClick={this.handleDeleteMerch.bind(this.state.details)}>Delete this item</button>
+            <hr />
+            <button onClick={this.handleChangeComponent.bind(null, "MerchList")}>Return to List</button>
+
           </div>
         );
       case "EditMerch":
         return (
           <div>
-            {currentComponent}
+            <EditMerch details={this.state.details} onEditMerch={this.handleEditMerch} />
+            <hr />
+            <button onClick={this.handleChangeComponent.bind(null, "MerchList")}>Return to List</button>
           </div>
         );
+      case "Cart":
+        return (
+          <div>
+            <Cart/>
+          </div>
+        )
       default:
       // code block
     }
-    
-   
-
-   
   };
 }
 

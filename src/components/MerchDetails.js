@@ -3,9 +3,13 @@ import React from "react";
 function MerchDetails(props)
 {
   return (
-    <div onClick={props.onShowDetails}>
-      <p>{props.content}</p>
+    <div >
+      <p>{props.details.name}</p>
+      <p>{props.details.description}</p>
+      <p>{props.details.quantity}</p>
+      <button onClick=>Buy</button>
     </div>
+    
   )
 }
 
