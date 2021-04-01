@@ -7,7 +7,10 @@ function MerchDetails(props)
       <p>{props.details.name}</p>
       <p>{props.details.description}</p>
       <p>{props.details.quantity}</p>
-      <button onClick=>Buy</button>
+      
+      <p>You have {props.cartDetails.quantity} of {props.details.quantity} of these items in your cart</p>
+      <button onClick={props.onMerchBuy}>Buy</button>
+      <hr />
     </div>
     
   )

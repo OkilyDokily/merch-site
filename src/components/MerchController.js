@@ -11,7 +11,8 @@ class MerchController extends React.Component {
     this.state = {
       currentComponent: "MerchList",
       merchList: [],
-      details: null
+      details: null,
+      cartList:[]
     }
   }
 
@@ -21,9 +22,25 @@ class MerchController extends React.Component {
 
   handleMerchBuy = (item) => {
     const arr = this.state.merchList;
-    const index = this.state.merchList.findIndex(x => x.id === item.id);
-    arr[index].quantity = arr[index].quantity--;
-    this.setState({ merchList: arr});
+    const index = arr.findIndex(x => x.id === item.id);
+    console.log(index)
+    const quantity = arr[index].quantity;
+    
+    const cartItem = this.getCartDetails(item);
+    const cartIndex = this.state.cartList.findIndex(x => cartItem.id === x.id)
+    const cartArray = this.state.cartList;
+    
+    
+    if (cartItem.quantity <= quantity) {
+      ++cartItem.quantity;
+      cartArray[cartIndex] = cartItem;
+      this.setState({ merchList: cartArray });
+      this.props.onIncreaseItemsInCart();
+    }
+  }
+
+  handleMerchRestock = (item) => {
+
   }
 
   handleAddMerch = (item) => {
@@ -47,7 +64,13 @@ class MerchController extends React.Component {
   }
 
   handleShowDetails = (item) => {
-    this.setState({ currentComponent: "MerchDetail", details: item });
+    this.setState({ currentComponent: "MerchDetails", details: item });
+  }
+
+  getCartDetails = (item) => {
+    const cartArr = this.state.cartList;
+    const indexOfCart = cartArr.findIndex(x => x.id === item.id);
+    return (indexOfCart === -1) ? { id: item.id, quantity: 0 } : cartArr[indexOfCart];
   }
 
   render() {
@@ -67,12 +90,15 @@ class MerchController extends React.Component {
             <button onClick={this.handleChangeComponent.bind(null, "MerchList")}>Return to List</button>
           </div>
         );
-      case "MerchDetail":
+      case "MerchDetails":
+        let cartDetail = this.getCartDetails(this.state.details);
+        console.log(cartDetail.id)
         return (
           <div>
-            <MerchDetails details={this.state.details} />
+            <MerchDetails details={this.state.details} cartDetails={cartDetail}  onMerchBuy={this.handleMerchBuy.bind(null, this.state.details)} />
             <button onClick={this.handleChangeComponent.bind(null, "EditMerch")}>Edit this item</button>
             <button onClick={this.handleDeleteMerch.bind(this.state.details)}>Delete this item</button>
+
             <hr />
             <button onClick={this.handleChangeComponent.bind(null, "MerchList")}>Return to List</button>
 
@@ -89,7 +115,7 @@ class MerchController extends React.Component {
       case "Cart":
         return (
           <div>
-            <Cart/>
+            <Cart />
           </div>
         )
       default:

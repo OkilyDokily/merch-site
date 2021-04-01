@@ -8,7 +8,7 @@ function ReusableForm(props){
     const name = document.getElementById("name").value;
     const description = document.getElementById("description").value;
     const quantity = parseInt(document.getElementById("quantity").value);
-    const obj = {name, description, quantity }
+    const obj = {name, description, quantity}
     const obj2 = props.edit ? {id:props.details.id, ...obj } : {id:v4(), ...obj};
     props.reusableFormFunction(obj2);
   }
