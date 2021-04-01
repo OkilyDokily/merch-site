@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-04-01T20:08:46.190Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="5UdP6q1ALJR6Ra72NpC7" version="14.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2021-04-01T20:11:22.851Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="bdbbt2kGDlC7Y34JY3nm" version="14.5.3" type="github">
   <diagram id="stdUhQEAfxj0wNbAoXbi" name="Page-1">
     <mxGraphModel dx="1102" dy="582" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -61,7 +61,7 @@
         <mxCell id="aLGmNxjmz7APoRL6lMkc-2" value="Header" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="355" y="40" width="140" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="aLGmNxjmz7APoRL6lMkc-4" value="StoreCounter" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="aLGmNxjmz7APoRL6lMkc-4" value="CartCount" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="710" y="50" width="115" height="40" as="geometry" />
         </mxCell>
       </root>
