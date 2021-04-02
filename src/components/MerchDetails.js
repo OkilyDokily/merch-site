@@ -2,14 +2,30 @@ import React from "react";
 
 function MerchDetails(props)
 {
+
+  
+  console.log("merchDetails", "this.state", props.cartList);
+  
+
+  const cartArr = props.cartList;
+  let cart = cartArr.find(x => x.id === props.details.id);
+  let  quantity;
+  if (cart === undefined)
+  {
+    quantity = 0;
+  }
+  else{
+    quantity = cart.quantity;
+  }
+
   return (
     <div >
       <p>{props.details.name}</p>
       <p>{props.details.description}</p>
       <p>{props.details.quantity}</p>
       
-      <p>You have {props.cartDetails.quantity} of {props.details.quantity} of these items in your cart</p>
-      <button onClick={props.onMerchBuy}>Buy</button>
+      <p>You have {quantity} of {props.details.quantity} of these items in your cart</p>
+      <button onClick={() => props.onMerchAddToCart(props.details)}>Add 1 Merch to Cart</button>
       <hr />
     </div>
     

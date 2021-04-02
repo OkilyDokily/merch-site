@@ -12,7 +12,7 @@ class MerchController extends React.Component {
       currentComponent: "MerchList",
       merchList: [],
       details: null,
-      cartList:[]
+      cartList: []
     }
   }
 
@@ -20,23 +20,25 @@ class MerchController extends React.Component {
     this.setState({ currentComponent: component });
   };
 
-  handleMerchBuy = (item) => {
-    const arr = this.state.merchList;
-    const index = arr.findIndex(x => x.id === item.id);
-    console.log(index)
-    const quantity = arr[index].quantity;
-    
-    const cartItem = this.getCartDetails(item);
-    const cartIndex = this.state.cartList.findIndex(x => cartItem.id === x.id)
-    const cartArray = this.state.cartList;
-    
-    
-    if (cartItem.quantity <= quantity) {
-      ++cartItem.quantity;
-      cartArray[cartIndex] = cartItem;
-      this.setState({ merchList: cartArray });
-      this.props.onIncreaseItemsInCart();
-    }
+  handleMerchAddToCart = (item) => {
+
+        const cartArr = this.state.cartList;
+        console.log('CartArr', cartArr);
+        let cartItem = cartArr.find(x => x.id === item.id);
+
+        if (cartItem && (cartItem.quantity <= item.quantity)) {
+          cartItem.quantity = cartItem.quantity + 1;
+          //props.onIncreaseItemsInCart();
+          // console.log('Item quantity: ', item.quantity, 'Cart Item: ', cartItem);
+          console.log('Cartlist: ', cartArr)
+          console.log('State', this.state.cartList);
+          this.setState({ cartList: cartArr });
+        }
+        else if (item.quantity !== 0) {
+          //props.onIncreaseItemsInCart();
+          cartArr.push({ id: item.id, quantity: 1 })
+          this.setState({ cartList: cartArr });
+        }
   }
 
   handleMerchRestock = (item) => {
@@ -67,10 +69,9 @@ class MerchController extends React.Component {
     this.setState({ currentComponent: "MerchDetails", details: item });
   }
 
-  getCartDetails = (item) => {
-    const cartArr = this.state.cartList;
-    const indexOfCart = cartArr.findIndex(x => x.id === item.id);
-    return (indexOfCart === -1) ? { id: item.id, quantity: 0 } : cartArr[indexOfCart];
+
+  componentDidMount(){
+    console.log("merchController","this.state",this.state);
   }
 
   render() {
@@ -91,14 +92,11 @@ class MerchController extends React.Component {
           </div>
         );
       case "MerchDetails":
-        let cartDetail = this.getCartDetails(this.state.details);
-        console.log(cartDetail.id)
         return (
           <div>
-            <MerchDetails details={this.state.details} cartDetails={cartDetail}  onMerchBuy={this.handleMerchBuy.bind(null, this.state.details)} />
+            <MerchDetails details={this.state.details} cartList={this.state.cartList} onMerchAddToCart={this.handleMerchAddToCart} />
             <button onClick={this.handleChangeComponent.bind(null, "EditMerch")}>Edit this item</button>
             <button onClick={this.handleDeleteMerch.bind(this.state.details)}>Delete this item</button>
-
             <hr />
             <button onClick={this.handleChangeComponent.bind(null, "MerchList")}>Return to List</button>
 
