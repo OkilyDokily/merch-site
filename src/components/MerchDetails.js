@@ -3,10 +3,6 @@ import React from "react";
 function MerchDetails(props)
 {
 
-  
-  console.log("merchDetails", "this.state", props.cartList);
-  
-
   const cartArr = props.cartList;
   let cart = cartArr.find(x => x.id === props.details.id);
   let  quantity;

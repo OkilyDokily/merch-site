@@ -21,24 +21,22 @@ class MerchController extends React.Component {
   };
 
   handleMerchAddToCart = (item) => {
+  
+    const cartArr = this.state.cartList;
+   
+    let cartItem = cartArr.find(x => x.id === item.id);
 
-        const cartArr = this.state.cartList;
-        console.log('CartArr', cartArr);
-        let cartItem = cartArr.find(x => x.id === item.id);
-
-        if (cartItem && (cartItem.quantity <= item.quantity)) {
-          cartItem.quantity = cartItem.quantity + 1;
-          //props.onIncreaseItemsInCart();
-          // console.log('Item quantity: ', item.quantity, 'Cart Item: ', cartItem);
-          console.log('Cartlist: ', cartArr)
-          console.log('State', this.state.cartList);
-          this.setState({ cartList: cartArr });
-        }
-        else if (item.quantity !== 0) {
-          //props.onIncreaseItemsInCart();
-          cartArr.push({ id: item.id, quantity: 1 })
-          this.setState({ cartList: cartArr });
-        }
+    if (item.quantity !== 0 && cartItem && (cartItem.quantity < item.quantity)) {
+    
+      cartItem.quantity = cartItem.quantity + 1;
+      this.props.onIncreaseItemsInCart();
+      this.setState({ cartList: cartArr });
+    }
+    else if (item.quantity !== 0 && !cartItem) {
+      this.props.onIncreaseItemsInCart();
+      cartArr.push({ id: item.id, quantity: 1 })
+      this.setState({ cartList: cartArr });
+    }
   }
 
   handleMerchRestock = (item) => {
@@ -69,10 +67,29 @@ class MerchController extends React.Component {
     this.setState({ currentComponent: "MerchDetails", details: item });
   }
 
+  handlePurchase = () => {
+    let cart = this.state.cartList;
+    let items = this.state.merchList;
+    for(let i = 0;i < cart.length;i++){
+      let cartQuantity = cart[0].quantity;
+      let cartId = cart[0].id;
+      let itemsIndex = items.findIndex(x => x.id === cartId);
+      items[itemsIndex].quantity -= cartQuantity;
+    }
+    this.setState({merchList: items});
+  } 
 
-  componentDidMount(){
-    console.log("merchController","this.state",this.state);
-  }
+  getCartItems = () => {
+    let cart = this.state.cartList;
+    let items = this.state.merchList;
+    let result =  items.filter(x => (cart.find(y => y.id === x.id)!== undefined)).map(x => {
+      let result = cart.find(y=> y.id === x.id);
+      let obj = {...x,cartQuantity:result.quantity};
+      return obj;
+    });
+    return result;
+  } 
+
 
   render() {
     switch (this.state.currentComponent) {
@@ -81,6 +98,7 @@ class MerchController extends React.Component {
           <div>
             <MerchList merchList={this.state.merchList} onMerchBuy={this.handleMerchBuy} onShowDetails={this.handleShowDetails} />
             <button onClick={this.handleChangeComponent.bind(null, "AddMerchForm")}>Add a new item</button>
+            <button onClick={this.handleChangeComponent.bind(null, "Cart")}>See the Cart</button>
           </div>
         );
       case "AddMerchForm":
@@ -112,8 +130,11 @@ class MerchController extends React.Component {
         );
       case "Cart":
         return (
+
           <div>
-            <Cart />
+            <Cart onPurchase={this.handlePurchase} cart={this.getCartItems()}/>
+            <hr />
+            <button onClick={this.handleChangeComponent.bind(null, "MerchList")}>Return to List</button>
           </div>
         )
       default:
