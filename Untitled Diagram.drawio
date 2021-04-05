@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-04-05T20:38:30.155Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36" etag="ffRzHEajzztwwz8HbgvP" version="14.5.4" type="github">
+<mxfile host="app.diagrams.net" modified="2021-04-05T21:19:51.846Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36" etag="Io8o6dvKPDwH40vzpP1M" version="14.5.4" type="github">
   <diagram id="stdUhQEAfxj0wNbAoXbi" name="Page-1">
     <mxGraphModel dx="1102" dy="582" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -50,7 +50,7 @@
           <mxGeometry x="307.40506329113924" y="235" width="32.911392405063296" height="20" as="geometry" />
         </mxCell>
         <mxCell id="zb8YCU8-YoxPme7ainJi-17" value="" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="562.4683544303798" y="180" width="98.73417721518987" height="230" as="geometry" />
+          <mxGeometry x="562.47" y="190" width="98.73" height="220" as="geometry" />
         </mxCell>
         <mxCell id="zb8YCU8-YoxPme7ainJi-18" value="Reusable Form&lt;br&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="595.379746835443" y="210" width="32.911392405063296" height="20" as="geometry" />
@@ -66,6 +66,18 @@
         </mxCell>
         <mxCell id="Xz1QeVkWqWz68_1-wu0c-2" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="687.31" y="150" width="112.69" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="Xz1QeVkWqWz68_1-wu0c-4" value="Cart" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="723.65" y="150" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Xz1QeVkWqWz68_1-wu0c-5" value="CartItem" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="697.31" y="190" width="92.69" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Xz1QeVkWqWz68_1-wu0c-7" value="CartItem" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="255" width="92.69" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Xz1QeVkWqWz68_1-wu0c-8" value="CartItem" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="697.31" y="320" width="92.69" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
