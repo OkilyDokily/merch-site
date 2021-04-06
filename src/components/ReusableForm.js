@@ -21,7 +21,7 @@ function ReusableForm(props){
         <input id="description" type="text" defaultValue={props.edit ? props.details.description : ""} />
         <br />
         <label>Quantity:</label>
-        <input id="quantity" type="number" defaultValue={props.edit ? props.details.quantity : ""} />
+      <input id="quantity" min="1" type="number" defaultValue={props.edit ? props.details.quantity : ""} />
         <br />
         <input type="submit" onClick={Submit} value={props.edit ? "edit" : "submit"}/>
     </div>

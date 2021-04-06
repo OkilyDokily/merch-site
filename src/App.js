@@ -16,12 +16,12 @@ class App extends React.Component {
     this.setState({items:num})
   }
 
-  handleDecreaseItemsInCart = () => {
-    let num = this.state.items;
-    if (num !== 0)
+  handleDecreaseItemsInCart = (num) => {
+    let amount = this.state.items;
+    amount = amount - num;
+    if (!(amount < 0))
     {
-      num--;
-      this.setState({ items: num })
+      this.setState({ items: amount })
     } 
   }
   
