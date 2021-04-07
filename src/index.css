@@ -1,14 +1,32 @@
 @font-face {
   font-family: 'OldFashion';
-  src: local('OldFashion'), url(.\fonts\FeFCit2.ttf) format('truetype');
+  src: local('OldFashion'), url(./fonts/OldFashion/FeFCsc2.ttf) format('truetype');
 }
 
 
 button{
-  background-color: antiquewhite;
+  background-color: rgb(228, 208, 183);
   color: rgb(68, 118, 209);
   border-color: bisque;
   border-radius: 5px;
   margin-right: 7px;
+  font-size: 20px;
 }
 
+input[type="submit"],.small{
+  background-color: rgb(228, 208, 183);
+  color: rgb(68, 118, 209);
+  border-color: bisque;
+  border-radius: 5px;
+  margin-right: 7px;
+  font-size: 15px;
+}
+
+input:focus{
+  outline: none !important;
+ border-color: #5882ed;
+}
+
+div#app{
+  width: 500px !important;
+}

@@ -121,10 +121,11 @@ class MerchController extends React.Component {
         return (
           <div>
             <MerchDetails details={this.state.details} cartList={this.state.cartList} onMerchAddToCart={this.handleMerchAddToCart} />
-            <button onClick={this.handleChangeComponent.bind(null, "EditMerch")}>Edit this item</button>
-            <button onClick={this.handleDeleteMerch.bind(this.state.details)}>Delete this item</button>
+            <button class="small" onClick={this.handleChangeComponent.bind(null, "EditMerch")}>Edit this item</button>
+            <button class="small" onClick={this.handleDeleteMerch.bind(this.state.details)}>Delete this item</button>
             <hr />
             <button onClick={this.handleChangeComponent.bind(null, "MerchList")}>Return to List</button>
+            <button onClick={this.handleChangeComponent.bind(null, "Cart")}>See Cart</button>
 
           </div>
         );

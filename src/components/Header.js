@@ -6,7 +6,7 @@ function Header(props)
     display:"flex",
     flexDirection:"row",
     justifyContent:"space-between",
-    fontSize: "14px",
+    fontSize: "25px",
     fontFamily: "OldFashion"
   }
   return(

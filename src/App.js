@@ -24,13 +24,20 @@ class App extends React.Component {
       this.setState({ items: amount })
     } 
   }
+
+  appStyle = {
+    width:"95%",
+    margin:"auto",
+    height:"80vh"
+  }
   
   render()
   {
     return (
-      <div id="App" >
+      <div id="App" style={this.appStyle}>
         <Header count={this.state.items}/>
         <MerchController onIncreaseItemsInCart={this.handleIncreaseItemsInCart} onDecreaseItemsInCart={this.handleDecreaseItemsInCart} />
+        <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
       </div>
     );
   }

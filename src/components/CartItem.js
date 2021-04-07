@@ -1,10 +1,17 @@
-function CartItem(props)
-{
-  return(
-    <div>
+function CartItem(props) {
+  const CartItemStyle = {
+    display:"flex",
+    justifyContent:"space-between",
+    border:"1px solid",
+    borderColor:"#4a71d4",
+    padding:"6px"
+  }
+  return (
+
+    <div style={CartItemStyle}>
       <p>{props.potentialPurchase.name}</p>
       <p>{props.potentialPurchase.cartQuantity}</p>
-      {!props.isPurchased ? <button onClick={() =>props.removeItems(props.potentialPurchase.id)}>Remove these items from cart</button> : null}
+      {!props.isPurchased ? <button class="small" onClick={() => props.removeItems(props.potentialPurchase.id)}>Remove these items from cart</button> : null}
     </div>
   )
 }

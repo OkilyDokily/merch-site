@@ -3,8 +3,11 @@ import MerchItem from './MerchItem'
 
 function MerchList(props)
 {
+  const merchListStyle = {
+    minHeight:"70vh"
+  }
   return(
-    <div>
+    <div style={merchListStyle}>
       {props.merchList.map((item, index) => {
         return <MerchItem item={item} key={item.id} showDetailsFunction={props.onShowDetails}/>
       })}
