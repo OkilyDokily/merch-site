@@ -4,6 +4,7 @@ import AddMerchForm from './AddMerchForm'
 import MerchDetails from './MerchDetails';
 import EditMerch from './EditMerch';
 import Cart from './Cart';
+import PropTypes from 'prop-types';
 
 class MerchController extends React.Component {
   constructor() {
@@ -121,8 +122,8 @@ class MerchController extends React.Component {
         return (
           <div>
             <MerchDetails details={this.state.details} cartList={this.state.cartList} onMerchAddToCart={this.handleMerchAddToCart} />
-            <button class="small" onClick={this.handleChangeComponent.bind(null, "EditMerch")}>Edit this item</button>
-            <button class="small" onClick={this.handleDeleteMerch.bind(this.state.details)}>Delete this item</button>
+            <button className="small" onClick={this.handleChangeComponent.bind(null, "EditMerch")}>Edit this item</button>
+            <button className="small" onClick={this.handleDeleteMerch.bind(this.state.details)}>Delete this item</button>
             <hr />
             <button onClick={this.handleChangeComponent.bind(null, "MerchList")}>Return to Inventory</button>
             <button onClick={this.handleChangeComponent.bind(null, "Cart")}>See Cart</button>
@@ -150,6 +151,13 @@ class MerchController extends React.Component {
       // code block
     }
   };
+}
+
+MerchController.propTypes = {
+ 
+  onIncreaseItemsInCart: PropTypes.func,
+  onDecreaseItemsInCart: PropTypes.func,
+ 
 }
 
 export default MerchController;

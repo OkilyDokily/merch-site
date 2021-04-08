@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 function MerchDetails(props)
 {
@@ -27,6 +28,11 @@ function MerchDetails(props)
     </div>
     
   )
+}
+
+MerchDetails.propTypes = {
+  details:PropTypes.object,
+  onMerchAddToCart: PropTypes.func,
 }
 
 export default MerchDetails;

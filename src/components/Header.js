@@ -1,4 +1,5 @@
 import CartCount from './CartCount'
+import PropTypes from 'prop-types';
 
 function Header(props)
 {
@@ -16,5 +17,12 @@ function Header(props)
   </div>
   )
 }
+
+Header.propTypes = {
+
+  count: PropTypes.number,
+  
+}
+
 
 export default Header;

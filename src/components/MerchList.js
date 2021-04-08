@@ -1,5 +1,6 @@
 import React from 'react'
 import MerchItem from './MerchItem'
+import PropTypes from 'prop-types';
 
 function MerchList(props) {
   const merchListStyle = {
@@ -20,5 +21,11 @@ function MerchList(props) {
     </div>
   )
 }
+
+MerchItem.propTypes = {
+  merchList: PropTypes.arrayOf(PropTypes.object),
+  onShowDetails: PropTypes.func
+}
+
 
 export default MerchList;

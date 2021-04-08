@@ -1,5 +1,6 @@
 import React from 'react'
 import { v4 } from 'uuid'
+import PropTypes from 'prop-types';
 
 function ReusableForm(props) {
   function Submit(e) {
@@ -40,24 +41,33 @@ function ReusableForm(props) {
   return (
 
     <div id="reusable-form" style={ReusableFormStyle}>
-      <div style={ReusableFormInnerDivsStyle}>
-        <label style={ReusableFormLabelStyle}>Name:</label>
-        <input style={ReusableFormInputStyle} id="name" type="text" defaultValue={props.edit ? props.details.name : ""} required />
-      </div>
+      <form>
+        <div style={ReusableFormInnerDivsStyle}>
+          <label style={ReusableFormLabelStyle}>Name:</label>
+          <input style={ReusableFormInputStyle} id="name" type="text" defaultValue={props.edit ? props.details.name : ""} required/>
+        </div>
 
-      <div style={ReusableFormInnerDivsStyle}>
-        <label style={ReusableFormLabelStyle}>Description:</label>
-        <input style={ReusableFormInputStyle} id="description" type="text" defaultValue={props.edit ? props.details.description : ""} required />
-      </div>
+        <div style={ReusableFormInnerDivsStyle}>
+          <label style={ReusableFormLabelStyle}>Description:</label>
+          <input style={ReusableFormInputStyle} id="description" type="text" defaultValue={props.edit ? props.details.description : ""} required />
+        </div>
 
-      <div style={ReusableFormInnerDivsStyle}>
-        <label style={ReusableFormLabelStyle}>Quantity:</label>
-        <input style={ReusableFormInputStyle} id="quantity" min="1" type="number" defaultValue={props.edit ? props.details.quantity : ""} required />
-      </div>
+        <div style={ReusableFormInnerDivsStyle}>
+          <label style={ReusableFormLabelStyle}>Quantity:</label>
+          <input style={ReusableFormInputStyle} id="quantity" min="1" type="number" defaultValue={props.edit ? props.details.quantity : "1"} required />
+        </div>
 
-      <input type="submit" onClick={Submit} value={props.edit ? "edit" : "submit"} />
+        <input type="submit" onClick={Submit} value={props.edit ? "edit" : "submit"} />
+      </form>
+     
     </div>
   )
+}
+
+ReusableForm.propTypes = {
+  edit: PropTypes.bool,
+  details:PropTypes.object,
+  reusableFormFunction: PropTypes.func
 }
 
 export default ReusableForm;

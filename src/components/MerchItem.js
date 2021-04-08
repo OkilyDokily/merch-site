@@ -1,5 +1,5 @@
 import React from 'react'
-
+import PropTypes from 'prop-types';
 
 function MerchItem(props) {
 
@@ -16,7 +16,7 @@ function MerchItem(props) {
     fontWeight:"bold"
   }
   return (
-    <div class="merch-item" style={MerchItemStyle} onClick={() => props.showDetailsFunction(props.item)}>
+    <div className="merch-item" style={MerchItemStyle} onClick={() => props.showDetailsFunction(props.item)}>
       <div>
         <div style={boldLabel}>Item Name </div>
         <div>{props.item.name}</div>
@@ -32,5 +32,11 @@ function MerchItem(props) {
     </div>
   )
 }
+
+MerchItem.propTypes = {
+  item: PropTypes.object,
+  showDetailsFunction:PropTypes.func
+}
+
 
 export default MerchItem;

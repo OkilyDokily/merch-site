@@ -1,3 +1,6 @@
+
+import PropTypes from 'prop-types';
+
 function CartItem(props) {
   const CartItemStyle = {
     display:"flex",
@@ -13,9 +16,16 @@ function CartItem(props) {
     <div style={CartItemStyle}>
       <p>Item name: {props.potentialPurchase.name}</p>
       <p>Quantity to purchase: {props.potentialPurchase.cartQuantity}</p>
-      {!props.isPurchased ? <button class="small" onClick={() => props.removeItems(props.potentialPurchase.id)}>Remove these items from cart</button> : null}
+      {!props.isPurchased ? <button className="small" onClick={() => props.removeItems(props.potentialPurchase.id)}>Remove these items from cart</button> : null}
     </div>
   )
+}
+
+CartItem.propTypes = {
+ 
+  potentialPurchase: PropTypes.object,
+  removeItems: PropTypes.func,
+ 
 }
 
 export default CartItem;

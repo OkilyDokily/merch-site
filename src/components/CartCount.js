@@ -1,5 +1,7 @@
 import React from 'react';
 import cartsvg from './../img/shopping-cart.svg';
+import PropTypes from 'prop-types';
+
 
 function CartCount(props) {
   const CartCountStyle = {
@@ -24,6 +26,10 @@ function CartCount(props) {
       </div>  
     </div>
   )
+}
+
+CartCount.propTypes = {
+  count: PropTypes.number,
 }
 
 export default CartCount;

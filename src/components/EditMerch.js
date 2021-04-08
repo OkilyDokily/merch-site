@@ -1,5 +1,6 @@
 import React from 'react';
 import ReusableForm from './ReusableForm';
+import PropTypes from 'prop-types';
 
 function EditMerch(props)
 {
@@ -9,6 +10,14 @@ function EditMerch(props)
     </div>
   )
 }
+
+EditMerch.propTypes = {
+
+  details:PropTypes.object,
+  reusableFormFunction: PropTypes.func,
+
+}
+
 
 export default EditMerch;
 
