@@ -6,7 +6,8 @@ function Cart(props)
   const cartStyle = {
     display:"flex",
     flexDirection:"column",
-    justifyContent:"space-between",
+    justifyContent:"flex-start",
+    marginBottom: "5px",
     minHeight: "70vh"
   }
 
@@ -29,6 +30,7 @@ function Cart(props)
 
   return(
     <div style={cartStyle}>
+      <h3>Your Online Cart</h3>
       {props.cart.map(x => <CartItem isPurchased={props.isPurchased} removeItems={props.onRemoveAllItemsOfTypeFromCart}  key={x.id} potentialPurchase={x}/>)}
       {(!props.isPurchased && props.cart.length > 0) ? <button style={purchaseButtonStyle} onClick={props.onPurchase}><p>Purchase</p></button> : null }
       {props.isPurchased ? <div style={divInButton}>Thanks for your purchase. You should see an itemized receipt in your email soon.</div>: null}

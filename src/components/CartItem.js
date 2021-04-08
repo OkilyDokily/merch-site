@@ -4,13 +4,15 @@ function CartItem(props) {
     justifyContent:"space-between",
     border:"1px solid",
     borderColor:"#4a71d4",
-    padding:"6px"
+    padding:"6px",
+    marginBottom:"5px",
+    flexGrow: "1px"
   }
   return (
 
     <div style={CartItemStyle}>
-      <p>{props.potentialPurchase.name}</p>
-      <p>{props.potentialPurchase.cartQuantity}</p>
+      <p>Item name: {props.potentialPurchase.name}</p>
+      <p>Quantity to purchase: {props.potentialPurchase.cartQuantity}</p>
       {!props.isPurchased ? <button class="small" onClick={() => props.removeItems(props.potentialPurchase.id)}>Remove these items from cart</button> : null}
     </div>
   )

@@ -114,7 +114,7 @@ class MerchController extends React.Component {
           <div>
             <AddMerchForm onAddMerch={this.handleAddMerch} />
             <hr />
-            <button onClick={this.handleChangeComponent.bind(null, "MerchList")}>Return to List</button>
+            <button onClick={this.handleChangeComponent.bind(null, "MerchList")}>Return to Inventory</button>
           </div>
         );
       case "MerchDetails":
@@ -124,7 +124,7 @@ class MerchController extends React.Component {
             <button class="small" onClick={this.handleChangeComponent.bind(null, "EditMerch")}>Edit this item</button>
             <button class="small" onClick={this.handleDeleteMerch.bind(this.state.details)}>Delete this item</button>
             <hr />
-            <button onClick={this.handleChangeComponent.bind(null, "MerchList")}>Return to List</button>
+            <button onClick={this.handleChangeComponent.bind(null, "MerchList")}>Return to Inventory</button>
             <button onClick={this.handleChangeComponent.bind(null, "Cart")}>See Cart</button>
 
           </div>
@@ -134,7 +134,7 @@ class MerchController extends React.Component {
           <div>
             <EditMerch details={this.state.details} onEditMerch={this.handleEditMerch} />
             <hr />
-            <button onClick={this.handleChangeComponent.bind(null, "MerchList")}>Return to List</button>
+            <button onClick={this.handleChangeComponent.bind(null, "MerchList")}>Return to Inventory</button>
           </div>
         );
       case "Cart":
@@ -143,7 +143,7 @@ class MerchController extends React.Component {
           <div>
             <Cart isPurchased={this.state.purchased} onPurchase={this.handlePurchase} onRemoveAllItemsOfTypeFromCart={this.handleRemoveAllItemOfTypeFromCart} cart={this.getCartItems()} />
             <hr />
-            <button onClick={this.handleChangeComponent.bind(null, "MerchList")}>Return to List</button>
+            <button onClick={this.handleChangeComponent.bind(null, "MerchList")}>Return to Inventory</button>
           </div>
         )
       default:

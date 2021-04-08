@@ -12,7 +12,9 @@ function CartCount(props) {
     margin:"0",
     lineHeight:"12px",
     paddingTop:"7px",
-    paddingLeft: "6px"
+    paddingLeft: "6px",
+    fontSize: "15px",
+    color:(props.count > 0 ? "blue" : "red")
   }
   return (
     <div style={CartCountStyle}>
